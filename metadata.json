@@ -1,0 +1,6 @@
+{
+  "name": "WENAS (ونس) - NASA Space Apps",
+  "description": "Bilingual interactive scrollytelling platform for WENAS: autonomous physiological and psychological astronaut life-support system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
