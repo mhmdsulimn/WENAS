@@ -3,7 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
+import { AnimatePresence } from 'motion/react';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { useVitalStore } from './state/useVitalStore';
 import { SpaceBackground } from './components/ui/SpaceBackground';
@@ -12,8 +13,11 @@ import { HeroSection } from './components/sections/HeroSection';
 import { ChestBeltSection } from './components/sections/ChestBeltSection';
 import { SmartBraceletSection } from './components/sections/SmartBraceletSection';
 import { GroundingSection } from './components/sections/GroundingSection';
+import { MissionPreloader } from './components/ui/MissionPreloader';
 
 function WenasAppContent() {
+  const [isLoading, setIsLoading] = useState(true);
+
   const {
     status,
     metrics,
@@ -30,6 +34,13 @@ function WenasAppContent() {
 
   return (
     <div className="relative min-h-screen text-slate-100 overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* Cinematic Fullscreen Preloader for 3D Assets & Calibration */}
+      <AnimatePresence>
+        {isLoading && (
+          <MissionPreloader onComplete={() => setIsLoading(false)} />
+        )}
+      </AnimatePresence>
+
       {/* Dynamic Cosmic Space Background with Twinkling Stars & Shooting Stars */}
       <SpaceBackground />
 
